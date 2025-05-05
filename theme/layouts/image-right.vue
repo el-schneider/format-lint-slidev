@@ -14,10 +14,10 @@ const style = computed(() => handleBackground(props.image));
 </script>
 
 <template>
-  <div class="grid grid-cols-2 w-full h-full items-start">
+  <div class="grid grid-cols-2 w-full max-h-full items-start">
     <div class="slidev-layout default image-right" :class="props.class">
       <slot />
     </div>
-    <div class="my-14 mr-14" :style="style" />
+    <div class="my-14 mr-14 h-full" :style="style" />
   </div>
 </template>

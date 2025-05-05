@@ -1,7 +1,7 @@
 ---
 theme: ./theme
 background: https://source.unsplash.com/collection/94734566/1920x1080
-highlighter: #
+highlighter: shiki
 mdc: true
 layout: intro
 ---
@@ -139,62 +139,71 @@ layout: section
 
 # Prettier
 
-## Konsistente Codeformatierung
+## Konsistente Codeformatierung ohne Diskussion
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: /images/prettier_splash.png
 ---
 
 # Was ist Prettier?
 
-- Opinionated Code-Formatierer
-- Unterstützt JavaScript, TypeScript, CSS, HTML, JSON, Vue...
-- 2025: Mehr Sprachen, bessere Konfigurierbarkeit
-
-<div class="grid grid-cols-2 gap-4 mt-4">
-  <div class="bg-gray-100 p-4 rounded">
-    <h3 class="text-sm mb-2">Vor Prettier</h3>
-    <pre>
-function Example(props)    {
-  if(props.isEnabled){
-    return <div>Enabled</div>}
-  else{
-      return <div>Disabled</div>
-  }
-}
-    </pre>
-  </div>
-  <div class="bg-gray-100 p-4 rounded">
-    <h3 class="text-sm mb-2">Nach Prettier</h3>
-    <pre>
-function Example(props) {
-  if (props.isEnabled) {
-    return <div>Enabled</div>;
-  } else {
-    return <div>Disabled</div>;
-  }
-}
-    </pre>
-  </div>
-</div>
+- _Opinionated_ Code-Formatierer
+- Unterstützt JavaScript, TypeScript, CSS, HTML, PHP, …
+- De-facto Standard für JavaScript/TypeScript
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
-# Warum Prettier?
+# Language Support
 
-- Zeit sparen
-- Code Reviews verbessern
-- Konsistenz im Team
-- Einfacheres Onboarding
+::left::
+
+- JavaScript/TypeScript
+- JSX
+- Vue
+- CSS, Less, and SCSS
+- HTML
+- JSON
+- GraphQL
+- Markdown
+- YAML
+- ...
+
+::right::
+
+## Offizielle Plugins
+
+Prettier hat viele Plugins für verschiedene Sprachen und Frameworks.
+
+```bash
+npm install --save-dev prettier-plugin-tailwindcss
+```
+
+- `prettier-plugin-blade`
+- `prettier-plugin-tailwindcss`
+- `prettier-plugin-antlers`
+- `prettier-plugin-php`
+- `prettier-plugin-xml`
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
-# Einrichtung in VSCode
+# Installation im Projekt
+
+::left::
+
+## 1. Prettier installieren:
+
+```bash
+npm install --save-dev prettier
+```
+
+::right::
+
+## 2. Prettier konfigurieren:
 
 ```json
 // .prettierrc
@@ -205,11 +214,99 @@ layout: bullets
   "trailingComma": "es5",
   "semi": true
 }
+```
 
+```json
 // settings.json
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+---
+layout: two-cols-header
+---
+
+# Einrichtung in VSCode
+
+::left::
+
+- Installiere die Extension: <br>
+  `esbenp.prettier-vscode`
+- Optional: `editor.formatOnSave` in VSCode
+
+```bash
+npm install --save-dev prettier
+```
+
+::right::
+
+```json
+// settings.json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+---
+layout: two-cols-header
+---
+
+# Notfall-Maßnahmen
+
+oder: bitte, nerv' mich nicht!
+
+::left::
+
+## .prettierignore
+
+Beispiel im `stinit`:
+
+```bash
+# .prettierignore
+**/*.yml
+**/*.yaml
+**/*.md
+/storage
+composer.lock
+composer.json
+package-lock.json
+/public/vendor
+```
+
+```bash
+# einzelne Dateien ignorieren
+/examples/example.blade.php
+```
+
+::right::
+
+## Ignorieren mit Kommentaren
+
+```js
+// JS
+// prettier-ignore
+const matrix = [
+  1, 0, 0,
+  0, 1, 0,
+  0, 0, 1
+];
+```
+
+```css
+// CSS
+/* prettier-ignore */
+.my    ugly rule {
+}
+```
+
+```yaml
+// YAML
+# prettier-ignore
+key  : value
+hello: world
 }
 ```
 
@@ -268,8 +365,8 @@ export default [
 ```
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # VSCode-Integration
 
@@ -283,16 +380,16 @@ layout: bullets
 ```
 
 ---
-layout: section
----
+
+## layout: section
 
 # Vite
 
 ## Blitzschnelle Entwicklungsumgebung
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Was ist Vite?
 
@@ -301,8 +398,8 @@ layout: bullets
 - 2025: Noch bessere Performance, mehr Plugins
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Warum Vite?
 
@@ -312,8 +409,8 @@ layout: bullets
 - Optimierte Production Builds
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Einrichtung eines Projekts
 
@@ -340,16 +437,16 @@ export default defineConfig({
 ```
 
 ---
-layout: section
----
+
+## layout: section
 
 # Integration
 
 ## Zusammenspiel in VSCode
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Workspace-Konfiguration
 
@@ -377,8 +474,8 @@ layout: bullets
 ```
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Empfohlene Extensions
 
@@ -387,14 +484,14 @@ layout: bullets
 - Antlers Toolbox
 
 ---
-layout: section
----
+
+## layout: section
 
 # Umgang mit Problemfällen
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # ESLint-Regeln deaktivieren
 
@@ -422,31 +519,8 @@ function debuggingFunction() {
 ```
 
 ---
-layout: bullets
----
 
-# Prettier-Formatierung überspringen
-
-```js
-// Ganzes File
-// prettier-ignore-file
-
-// Codeblock
-// prettier-ignore
-const matrix = [
-  1, 0, 0,
-  0, 1, 0,
-  0, 0, 1
-];
-
-// In JSX/Vue Templates
-{/* prettier-ignore */}
-<div>Dies wird nicht formatiert!</div>;
-```
-
----
-layout: bullets
----
+## layout: bullets
 
 # Laravel & Blade Lösungen
 
@@ -476,8 +550,8 @@ export default [
 ```
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Antlers (Statamic) Lösungen
 
@@ -491,14 +565,12 @@ layout: bullets
 ```
 
 ```
-{{# prettier-ignore #}}
-  {{ komplexer_antlers_code }}
-{{# /prettier-ignore #}}
+{{ komplexer_antlers_code }}
 ```
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # .ignore Dateien
 
@@ -518,14 +590,14 @@ dist/*
 ```
 
 ---
-layout: section
----
+
+## layout: section
 
 # Implementierungsstrategie
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Schrittweise Einführung
 
@@ -536,8 +608,8 @@ layout: bullets
 5. **Iteration**: Regeln anpassen nach Bedarf
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Umgang mit Legacy-Code
 
@@ -547,8 +619,8 @@ layout: bullets
 - Verzeichnisspezifische Overrides
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # CI/CD-Integration
 
@@ -571,14 +643,14 @@ jobs:
 ```
 
 ---
-layout: section
----
+
+## layout: section
 
 # Vorteile
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Messbare Vorteile
 
@@ -588,8 +660,8 @@ layout: bullets
 - Höhere Codequalität
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Nicht-messbare Vorteile
 
@@ -599,14 +671,14 @@ layout: bullets
 - Einheitliche Qualitätsstandards
 
 ---
-layout: section
----
+
+## layout: section
 
 # Nächste Schritte
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Implementierungsplan
 
@@ -616,8 +688,8 @@ layout: bullets
 4. **Fortlaufend**: Regelmäßige Verbesserungen
 
 ---
-layout: bullets
----
+
+## layout: bullets
 
 # Lernressourcen
 
@@ -628,7 +700,7 @@ layout: bullets
 - [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 ---
-layout: section
----
+
+## layout: section
 
 # Fragen?
