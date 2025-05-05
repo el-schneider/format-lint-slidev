@@ -1,9 +1,9 @@
 ---
-theme: apple-basic
+theme: ./theme
 background: https://source.unsplash.com/collection/94734566/1920x1080
-class: text-center
 highlighter: shiki
 mdc: true
+layout: intro
 ---
 
 # Pragmatisches Tooling
@@ -11,15 +11,14 @@ mdc: true
 ## Prettier, ESLint (9+) und Vite in 2025
 
 ---
-
-## layout: two-cols
+layout: intro-image-right
+image: https://source.unsplash.com/collection/94734566/1920x1080
+---
 
 # 1. Grundlagen
 
-::right::
-
-<!-- <img src="/api/placeholder/500/300" alt="Code quality tools illustration" class="rounded shadow" /> -->
-
+---
+layout: bullets
 ---
 
 # Linting vs. Formatting
@@ -30,6 +29,8 @@ mdc: true
 | Identifiziert problematische Muster  | Sorgt für einheitliches Erscheinungsbild |
 | Tools: ESLint                        | Tools: Prettier                          |
 
+---
+layout: bullets
 ---
 
 # Statische vs. Dynamische Analyse
@@ -42,24 +43,42 @@ mdc: true
 | Beispiele: ESLint, TypeScript            | Beispiele: Profiler, Debugger, Tests         |
 
 ---
+layout: bullets
+---
 
 # Warum brauchen wir das?
 
 > "Our top reason was to stop wasting our time debating style nits."
 >
+> _spatie.be_
+
+> "Prettier determines our code style. While Prettier's output isn't always the prettiest, it's consistent and removes all (meaningless) discussion about code style."
+>
 > _prettier.io_
+
+---
+layout: bullets
+---
+
+# Warum brauchen wir das?
+
+<v-clicks>
 
 - Keine Diskussionen über Tabs vs. Spaces
 - Fokus auf Logik statt Formatierung
 - Konsistente Codequalität
 - Einfacheres Onboarding
 
----
+</v-clicks>
 
-## layout: section
+---
+layout: section
+---
 
 # 2. Tool-Landschaft
 
+---
+layout: bullets
 ---
 
 # JavaScript/TypeScript Ecosystem
@@ -69,6 +88,8 @@ mdc: true
 - **TypeScript Compiler**: Eigenes Typechecking/Linting
 - **JSConfig**: VS Code-Integration für JavaScript
 
+---
+layout: bullets
 ---
 
 # PHP/Laravel Ecosystem
@@ -80,6 +101,8 @@ mdc: true
 - **Larastan/PHPStan**: Statische Analyse
 
 ---
+layout: bullets
+---
 
 # Build-Tools mit Linting
 
@@ -87,13 +110,16 @@ mdc: true
 - **Laravel Mix**: Wrapper um Webpack
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 3. Prettier
 
 ## Konsistente Codeformatierung
 
+---
+layout: image-right
+image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
 # Was ist Prettier?
@@ -130,6 +156,8 @@ function Example(props) {
 </div>
 
 ---
+layout: bullets
+---
 
 # Warum Prettier?
 
@@ -138,6 +166,8 @@ function Example(props) {
 - Konsistenz im Team
 - Einfacheres Onboarding
 
+---
+layout: bullets
 ---
 
 # Einrichtung in VSCode
@@ -160,13 +190,15 @@ function Example(props) {
 ```
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 4. ESLint 9+
 
 ## Code-Qualität sicherstellen
 
+---
+layout: bullets
 ---
 
 # Was ist ESLint?
@@ -176,6 +208,8 @@ function Example(props) {
 - ESLint 9+: Flat Config, bessere Performance
 
 ---
+layout: bullets
+---
 
 # Warum ESLint?
 
@@ -184,6 +218,8 @@ function Example(props) {
 - Modernisierung fördern
 - Lerneffekt für Entwickler
 
+---
+layout: bullets
 ---
 
 # Moderne Konfiguration (ESLint 9+)
@@ -208,6 +244,8 @@ export default [
 ```
 
 ---
+layout: bullets
+---
 
 # VSCode-Integration
 
@@ -221,13 +259,15 @@ export default [
 ```
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 5. Vite
 
 ## Blitzschnelle Entwicklungsumgebung
 
+---
+layout: bullets
 ---
 
 # Was ist Vite?
@@ -237,6 +277,8 @@ export default [
 - 2025: Noch bessere Performance, mehr Plugins
 
 ---
+layout: bullets
+---
 
 # Warum Vite?
 
@@ -245,6 +287,8 @@ export default [
 - Instant Hot Module Replacement
 - Optimierte Production Builds
 
+---
+layout: bullets
 ---
 
 # Einrichtung eines Projekts
@@ -272,13 +316,15 @@ export default defineConfig({
 ```
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 6. Integration
 
 ## Zusammenspiel in VSCode
 
+---
+layout: bullets
 ---
 
 # Workspace-Konfiguration
@@ -307,6 +353,8 @@ export default defineConfig({
 ```
 
 ---
+layout: bullets
+---
 
 # Empfohlene Extensions
 
@@ -316,11 +364,13 @@ export default defineConfig({
 - Error Lens
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 7. Umgang mit Problemfällen
 
+---
+layout: bullets
 ---
 
 # ESLint-Regeln deaktivieren
@@ -349,6 +399,8 @@ function debuggingFunction() {
 ```
 
 ---
+layout: bullets
+---
 
 # Prettier-Formatierung überspringen
 
@@ -369,6 +421,8 @@ const matrix = [
 <div>Dies wird nicht formatiert!</div>;
 ```
 
+---
+layout: bullets
 ---
 
 # Laravel & Blade Lösungen
@@ -399,6 +453,8 @@ export default [
 ```
 
 ---
+layout: bullets
+---
 
 # Antlers (Statamic) Lösungen
 
@@ -417,6 +473,8 @@ export default [
 {{# /prettier-ignore #}}
 ```
 
+---
+layout: bullets
 ---
 
 # .ignore Dateien
@@ -437,11 +495,13 @@ dist/*
 ```
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 8. Implementierungsstrategie
 
+---
+layout: bullets
 ---
 
 # Schrittweise Einführung
@@ -453,6 +513,8 @@ dist/*
 5. **Iteration**: Regeln anpassen nach Bedarf
 
 ---
+layout: bullets
+---
 
 # Umgang mit Legacy-Code
 
@@ -461,6 +523,8 @@ dist/*
 - Manuelle Anpassungen für komplexe Fälle
 - Verzeichnisspezifische Overrides
 
+---
+layout: bullets
 ---
 
 # CI/CD-Integration
@@ -484,11 +548,13 @@ jobs:
 ```
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 9. Vorteile
 
+---
+layout: bullets
 ---
 
 # Messbare Vorteile
@@ -499,6 +565,8 @@ jobs:
 - Höhere Codequalität
 
 ---
+layout: bullets
+---
 
 # Nicht-messbare Vorteile
 
@@ -508,11 +576,13 @@ jobs:
 - Einheitliche Qualitätsstandards
 
 ---
-
-## layout: section
+layout: section
+---
 
 # 10. Nächste Schritte
 
+---
+layout: bullets
 ---
 
 # Implementierungsplan
@@ -522,6 +592,8 @@ jobs:
 3. **Woche 5-6**: Ausweitung auf alle Projekte
 4. **Fortlaufend**: Regelmäßige Verbesserungen
 
+---
+layout: bullets
 ---
 
 # Lernressourcen
@@ -533,7 +605,7 @@ jobs:
 - [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 ---
-
-## layout: end
+layout: section
+---
 
 # Fragen?
