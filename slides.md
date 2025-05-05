@@ -1,7 +1,7 @@
 ---
 theme: ./theme
 background: https://source.unsplash.com/collection/94734566/1920x1080
-highlighter: shiki
+highlighter: #
 mdc: true
 layout: intro
 ---
@@ -11,11 +11,31 @@ layout: intro
 ## Prettier, ESLint (9+) und Vite in 2025
 
 ---
-layout: intro-image-right
+layout: section
 image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
-# 1. Grundlagen
+# Grundlagen
+
+---
+layout: bullets
+---
+
+# Was macht Formatting?
+
+- Automatische Anpassung der Code-Struktur nach vordefinierten Regeln
+- Einheitliches Erscheinungsbild des Codes sicherstellen
+- Änderung von Whitespace, Zeilenumbrüchen, Einrückungen, Kommasetzung etc.
+
+---
+layout: bullets
+---
+
+# Was macht Linting?
+
+- Statische Code-Analyse zur Identifikation problematischer Muster
+- Logische Fehler, Bugs vor der Ausführung finden
+- Tools scannen Code ohne Ausführung und warnen bei Problemen
 
 ---
 layout: bullets
@@ -23,11 +43,10 @@ layout: bullets
 
 # Linting vs. Formatting
 
-| **Linting**                          | **Formatting**                           |
-| ------------------------------------ | ---------------------------------------- |
-| Findet semantische/logische Probleme | Kümmert sich um die Formatierung         |
-| Identifiziert problematische Muster  | Sorgt für einheitliches Erscheinungsbild |
-| Tools: ESLint                        | Tools: Prettier                          |
+| **Formatting**                           | **Linting**                          |
+| ---------------------------------------- | ------------------------------------ |
+| Kümmert sich um die Formatierung         | Findet semantische/logische Probleme |
+| Sorgt für einheitliches Erscheinungsbild | Identifiziert problematische Muster  |
 
 ---
 layout: bullets
@@ -50,35 +69,40 @@ layout: bullets
 
 > "Our top reason was to stop wasting our time debating style nits."
 >
-> _spatie.be_
+> _prettier.io_
 
 > "Prettier determines our code style. While Prettier's output isn't always the prettiest, it's consistent and removes all (meaningless) discussion about code style."
 >
-> _prettier.io_
+> _spatie.be_
+
+> You can avoid discussions like "should I be using tabs or spaces?" and "does the curly brace go at the end of the line or on the next line?"
+>
+> _vicvijayakumar.com_
+
+---
+layout: statement
+---
+
+# Die Formatierung ist Nebensache
 
 ---
 layout: bullets
 ---
 
-# Warum brauchen wir das?
+# Darum brauchen wir das!
 
-<v-clicks>
-
-- Keine Diskussionen über Tabs vs. Spaces
+- Als friedensstiftende Maßnahme
 - Fokus auf Logik statt Formatierung
-- Konsistente Codequalität
+- Lesbarere Merge Requests
 - Einfacheres Onboarding
-
-</v-clicks>
-
----
-layout: section
----
-
-# 2. Tool-Landschaft
+- Als Hilfestellung für Azubis
 
 ---
+src: ./tool-landscape.md
+---
+
 layout: bullets
+
 ---
 
 # JavaScript/TypeScript Ecosystem
@@ -113,7 +137,7 @@ layout: bullets
 layout: section
 ---
 
-# 3. Prettier
+# Prettier
 
 ## Konsistente Codeformatierung
 
@@ -193,7 +217,7 @@ layout: bullets
 layout: section
 ---
 
-# 4. ESLint 9+
+# ESLint 9+
 
 ## Code-Qualität sicherstellen
 
@@ -262,7 +286,7 @@ layout: bullets
 layout: section
 ---
 
-# 5. Vite
+# Vite
 
 ## Blitzschnelle Entwicklungsumgebung
 
@@ -319,7 +343,7 @@ export default defineConfig({
 layout: section
 ---
 
-# 6. Integration
+# Integration
 
 ## Zusammenspiel in VSCode
 
@@ -360,14 +384,13 @@ layout: bullets
 
 - Prettier
 - ESLint
-- Vite Helper
-- Error Lens
+- Antlers Toolbox
 
 ---
 layout: section
 ---
 
-# 7. Umgang mit Problemfällen
+# Umgang mit Problemfällen
 
 ---
 layout: bullets
@@ -498,7 +521,7 @@ dist/*
 layout: section
 ---
 
-# 8. Implementierungsstrategie
+# Implementierungsstrategie
 
 ---
 layout: bullets
@@ -551,7 +574,7 @@ jobs:
 layout: section
 ---
 
-# 9. Vorteile
+# Vorteile
 
 ---
 layout: bullets
@@ -579,7 +602,7 @@ layout: bullets
 layout: section
 ---
 
-# 10. Nächste Schritte
+# Nächste Schritte
 
 ---
 layout: bullets

@@ -1,0 +1,9 @@
+@import "prism-theme-vars/base.css";
+@import "codemirror-theme-vars/base.css";
+@import "prism-theme-vars/to-codemirror.css";
+
+:root {
+  --slidev-code-font-family: monospace;
+  --prism-background: #2a2139; /* Synthwave background */
+  --slidev-theme-primary: #eee;
+}
