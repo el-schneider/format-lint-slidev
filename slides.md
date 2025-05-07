@@ -6,9 +6,31 @@ mdc: true
 layout: intro
 ---
 
-# Pragmatisches Tooling
+## hello vvworld
 
-## Prettier, ESLint (9+) und Vite in 2025
+# Prettier & ESLint
+
+<v-click>& Pint, Duster, Larastan, …</v-click>
+
+---
+layout: section
+---
+
+# Was erwartet euch heute?
+
+<v-clicks>
+
+- Grundlagen: Formatting vs. Linting
+- Überblick über das Ökosystem
+- Grundlegendes Setup und How-To der wichtigsten Tools
+  - Extensions
+  - Config Files
+  - CLI Befehle
+- Notfallmaßnahmen
+  - AKA: Wie verhindere ich, dass die Tools mich nerven
+- Eine goldene Zukunft (hoffentlich)
+
+</v-clicks>
 
 ---
 layout: section
@@ -18,7 +40,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 # Grundlagen
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
 # Was macht Formatting?
@@ -26,6 +48,42 @@ layout: bullets
 - Automatische Anpassung der Code-Struktur nach vordefinierten Regeln
 - Einheitliches Erscheinungsbild des Codes sicherstellen
 - Änderung von Whitespace, Zeilenumbrüchen, Einrückungen, Kommasetzung etc.
+
+::left::
+
+<v-click>
+
+## Vorher
+
+```php
+<?   php
+
+echo     'Bad!'   ;
+
+if        (    $bad){
+echo "Bad";
+       }
+```
+
+</v-click>
+
+::right::
+
+<v-click>
+
+## Nachher
+
+```php
+<?php
+
+echo "Less bad!";
+
+if ($lessBad) {
+    echo "Less bad";
+}
+```
+
+</v-click>
 
 ---
 layout: bullets
@@ -41,12 +99,16 @@ layout: bullets
 layout: bullets
 ---
 
-# Linting vs. Formatting
+# Formatting vs. Linting
 
-| **Formatting**                           | **Linting**                          |
-| ---------------------------------------- | ------------------------------------ |
-| Kümmert sich um die Formatierung         | Findet semantische/logische Probleme |
-| Sorgt für einheitliches Erscheinungsbild | Identifiziert problematische Muster  |
+| **Formatting**                                             | **Linting**                                                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------------- |
+| Erzwingt einheitlichen Code-Stil                           | Analysiert Code auf potenzielle Fehler und Qualitätsprobleme     |
+| Fokus auf Syntax-Darstellung (Leerzeichen, Einrückung ...) | Fokus auf Code-Semantik, Logik und Best Practices                |
+| Formatiert Code automatisch nach Stilregeln                | Kann einige Probleme beheben, meldet aber hauptsächlich Probleme |
+| Analysiert Codestruktur ohne Logikprüfung                  | Versteht Code-Bedeutung und potenzielle Ausführungspfade         |
+| Erkennt keine Logikfehler oder Bugs                        | Identifiziert potenzielle Bugs, Code Smells und Anti-Patterns    |
+| Generell schneller - einfachere Operationen                | Intensiver - erfordert tiefere Analyse                           |
 
 ---
 layout: bullets
@@ -62,10 +124,62 @@ layout: bullets
 | Beispiele: ESLint, TypeScript            | Beispiele: Profiler, Debugger, Tests         |
 
 ---
+layout: two-cols-header
+---
+
+# Abstract Syntax Tree
+
+- Beide Toolgruppen verwenden üblicherweise einen AST
+- Viele Tools mach(t)en deswegen sowohl Linting als auch Formatting
+
+::left::
+
+## Code
+
+```php
+<?php
+
+echo "hello vvworld!";
+```
+
+::right::
+
+## AST (gekürzt)
+
+```json
+{
+  "kind": "program",
+  "children": [
+    {
+      "expressions": [
+        {
+          "kind": "string",
+          "raw": "\"hello vvworld!\"",
+          "isDoubleQuote": true
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+src: ./tool-landscape.md
+---
+
+layout: bullets
+
+---
 layout: bullets
 ---
 
-# Warum brauchen wir das?
+# Uff ...
+
+---
+layout: bullets
+---
+
+# Why should I care?
 
 > "Our top reason was to stop wasting our time debating style nits."
 >
@@ -96,12 +210,6 @@ layout: bullets
 - Lesbarere Merge Requests
 - Einfacheres Onboarding
 - Als Hilfestellung für Azubis
-
----
-src: ./tool-landscape.md
----
-
-layout: bullets
 
 ---
 
@@ -221,6 +329,10 @@ npm install --save-dev prettier
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
 ```
 
@@ -247,6 +359,50 @@ npm install --save-dev prettier
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+---
+layout: two-cols-header
+---
+
+# Nutzung in der Pipeline
+
+::left::
+
+## CLI Befehl
+
+```bash
+prettier [options] [file/dir/glob ...]
+```
+
+## Empfehlung
+
+In der Pipeline nur checken, nicht fixen.
+
+::right::
+
+## Alles oder einzelne Dateien
+
+```bash
+prettier --check .
+```
+
+```bash
+prettier --write examples/example.blade.php
+```
+
+## Als NPM Script
+
+```bash
+npm run format:check
+npm run format:fix
+```
+
+```json
+"scripts": {
+  "format:check": "prettier --check .",
+  "format:fix": "prettier --write ."
 }
 ```
 
