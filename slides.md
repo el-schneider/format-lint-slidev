@@ -38,6 +38,8 @@ layout: statement
 
 # Formatting/Linting ist das IaC für die Codequalität
 
+<span v-click>FLaC?</span>
+
 ---
 layout: section
 image: https://source.unsplash.com/collection/94734566/1920x1080
@@ -281,7 +283,7 @@ layout: bullets
 - Einfacheres Onboarding – _neue Teammitglieder können sofort produktiv sein_
 - Als Hilfestellung für Azubis – _so muss das also aussehen_
 - Weniger Diskussionen – _lasset die Tools entscheiden!_
-- Den Stack meistern – _verstehen, was da ist_
+- Den Stack meistern – _verstehen, was ist_
 
 </v-clicks>
 
@@ -598,7 +600,7 @@ hello: world
 
 # Antlers
 
-Im Moment kann Formatierung nur für eine komplette Datei ausgeschalten werden.
+Im Moment kann Formatierung nur für eine komplette Datei deaktiviert werden.
 
 ```liquid
 {{#
@@ -612,6 +614,8 @@ oder `.prettierignore`
 # .prettierignore
 resources/views/some-special-code.antlers.html
 ```
+
+https://github.com/Stillat/vscode-antlers-language-server/issues/104
 
 ---
 layout: section
@@ -642,6 +646,8 @@ layout: two-cols-header
 ```bash
 npm install --save-dev eslint globals
 ```
+
+_globals_ sind z.B. `console`, `document`, `fetch`
 
 ::right::
 
@@ -680,6 +686,46 @@ export default defineConfig([
 ```
 
 </div>
+
+---
+layout: two-cols-header-footer
+---
+
+# ESLint-Regeln
+
+`.eslintrc` ist _deprecated_ seit ESLint 9. Ab jetzt wird die Konfiguration in `eslint.config.js` definiert.
+
+::left::
+
+## Konfiguration
+
+```js
+"off" or 0 // (turn the rule off)
+"warn" or 1 // (doesn’t affect exit code).
+"error" or 2 // (exit code is 1 when triggered).
+```
+
+::right::
+
+## Regeln
+
+```js
+export default defineConfig([
+  js.configs.recommended,
+  {
+    rules: {
+      eqeqeq: "warn",
+      camelcase: "1",
+    },
+  },
+]);
+```
+
+::bottom::
+
+https://eslint.org/docs/latest/rules/
+
+https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js
 
 ---
 layout: two-cols-header
@@ -737,6 +783,8 @@ function debuggingFunction() {
 }
 /* eslint-enable no-console, no-unused-vars */
 ```
+
+https://eslint.org/docs/latest/use/configure/rules
 
 ---
 layout: bullets

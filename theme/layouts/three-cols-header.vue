@@ -32,7 +32,7 @@ const props = defineProps({
 <style scoped>
 .three-cols-header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: minmax(4rem, auto) 1fr auto;
 }
 
