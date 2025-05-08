@@ -192,7 +192,7 @@ layout: bullets
 </v-clicks>
 
 ---
-layout: two-cols-header
+layout: two-cols-header-footer
 ---
 
 # Abstract Syntax Tree
@@ -214,6 +214,8 @@ echo "hello vvworld!";
 
 ## AST (vereinfacht)
 
+<div class="code-sm">
+
 ```json
 {
   "kind": "program",
@@ -230,6 +232,12 @@ echo "hello vvworld!";
   ]
 }
 ```
+
+</div>
+
+::bottom::
+
+https://astexplorer.net/
 
 ---
 src: ./tool-landscape.md
@@ -365,7 +373,7 @@ Prettier hat viele Plugins für verschiedene Sprachen und Frameworks.
 - `prettier-plugin-blade`
 - `prettier-plugin-tailwindcss`
 - `prettier-plugin-antlers`
-- `prettier-plugin-php`
+- <span v-mark.red.circle>`prettier-plugin-php`</span>
 - `prettier-plugin-xml`
 
 ---
@@ -397,6 +405,8 @@ indent_size = 2
 [*.md]
 trim_trailing_whitespace = false
 ```
+
+[editorconfig.org](https://editorconfig.org)
 
 </v-click>
 
@@ -637,7 +647,7 @@ layout: bullets
 layout: two-cols-header
 ---
 
-# Installation im Projekt
+# Installation im Projekt (JavaScript)
 
 ::left::
 
@@ -653,7 +663,7 @@ _globals_ sind z.B. `console`, `document`, `fetch`
 
 ## 2. ESLint konfigurieren
 
-<div style="--slidev-code-font-size: 8px; --slidev-code-line-height: 12px;">
+<div class="code-sm">
 
 ```js
 import { includeIgnoreFile } from "@eslint/compat";
@@ -701,7 +711,7 @@ layout: two-cols-header-footer
 
 ```js
 "off" or 0 // (turn the rule off)
-"warn" or 1 // (doesn’t affect exit code).
+"warn" or 1 // (doesn't affect exit code).
 "error" or 2 // (exit code is 1 when triggered).
 ```
 
@@ -814,7 +824,94 @@ npx eslint . --fix // fixen
 ```
 
 ---
+layout: two-cols-header-footer
+---
+
+# Installation im Projekt (Typescript)
+
+::left::
+
+## 1. Pakete installieren:
+
+```bash
+npm install --save-dev eslint \
+    @eslint/js \
+    typescript \
+    typescript-eslint
+```
+
+::right::
+
+## 2. ESLint konfigurieren
+
+```js
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  js.configs.recommended,
+  tseslint.configs.recommended,
+  // tseslint.configs.strict, (optional)
+  // tseslint.configs.stylistic, (optional)
+);
+```
+
+::bottom::
+
+https://typescript-eslint.io/getting-started
+
+https://typescript-eslint.io/rules/
+
+---
 layout: bullets
+---
+
+# Andere nützliche Resources
+
+<div class="flex gap-4 items-start">
+
+<img class="size-18" src="./images/react.svg" alt="React" />
+
+<div class="w-1/4">
+
+## React
+
+</div>
+
+[github.com/jsx-eslint/eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react?tab=readme-ov-file#configuration-new-eslintconfigjs)
+
+</div>
+
+<div class="flex gap-4 items-start">
+
+<img class="size-18" src="./images/vue.svg" alt="Vue" />
+
+<div class="w-1/4">
+
+## Vue
+
+</div>
+
+[github.com/vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue?tab=readme-ov-file#configuration-new-eslintconfigjs)
+
+</div>
+
+<div class="flex gap-4 items-start">
+
+<img class="size-18" src="./images/vite.svg" alt="Vite" />
+
+<div class="w-1/4">
+
+## Vite Templates
+
+</div>
+
+[github.com/vitejs/vite/tree/main/packages/create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite)
+
+</div>
+
+---
+layout: two-cols-header
 ---
 
 # PHP/Laravel Ökosystem

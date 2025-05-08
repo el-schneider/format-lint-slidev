@@ -20,3 +20,8 @@
     @apply border-transparent;
   }
 }
+
+.code-sm {
+  --slidev-code-font-size: 8px;
+  --slidev-code-line-height: 12px;
+}
