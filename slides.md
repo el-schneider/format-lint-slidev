@@ -304,20 +304,54 @@ Prettier hat viele Plugins für verschiedene Sprachen und Frameworks.
 - `prettier-plugin-xml`
 
 ---
-layout: two-cols-header
+layout: three-cols-header
 ---
 
 # Installation im Projekt
 
 ::left::
 
-## 1. Prettier installieren:
+<v-click>
+
+## 1. `.editorconfig`
+
+```ini
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{yaml,yml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+</v-click>
+
+::center::
+
+<v-click>
+
+## 2. Prettier installieren:
 
 ```bash
 npm install --save-dev prettier
 ```
 
-bzw.
+</v-click>
+
+<v-click>fertig!</v-click>
+
+<v-click>
+
+nicht ganz …
 
 ```bash
 npm install --save-dev \
@@ -326,13 +360,13 @@ npm install --save-dev \
     prettier-plugin-tailwindcss
 ```
 
-<v-click>fertig!</v-click>
+</v-click>
 
 ::right::
 
 <v-click>
 
-## 2. Prettier konfigurieren
+## 3. Prettier konfigurieren
 
 ```json
 // prettier-ignore
