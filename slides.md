@@ -20,17 +20,21 @@ layout: section
 
 <v-clicks>
 
-- Grundlagen: Formatting vs. Linting
-- Überblick über das Ökosystem
+- Grundlagen: Formatting, Linting, … — _die Terminologie verstehen_
+- Überblick über das Ökosystem — _die Tools kennen_
 - Grundlegendes Setup und How-To der wichtigsten Tools
   - Extensions
-  - Config Files
+  - Config Dateien
   - CLI Befehle
-- Notfallmaßnahmen
-  - AKA: Wie verhindere ich, dass die Tools mich nerven
-- Eine goldene Zukunft (hoffentlich)
+- Die Tools souverän nutzen — _sich nicht ärgern lassen_
 
 </v-clicks>
+
+---
+layout: statement
+---
+
+# Formatting/Linting ist das IaC für die Codequalität
 
 ---
 layout: section
@@ -173,13 +177,21 @@ layout: bullets
 layout: bullets
 ---
 
-# Uff ...
+# Uff …
+
+---
+layout: statement
+---
+
+# It's not about looks
+
+oder: Das _Wie_ ist Nebensache
 
 ---
 layout: bullets
 ---
 
-# Why should I care?
+# Worum geht es dann?
 
 > "Our top reason was to stop wasting our time debating style nits."
 >
@@ -194,23 +206,26 @@ layout: bullets
 > _vicvijayakumar.com_
 
 ---
-layout: statement
----
-
-# Die Formatierung ist Nebensache
-
----
 layout: bullets
 ---
 
-# Darum brauchen wir das!
+# Was wir davon haben
 
-- Als friedensstiftende Maßnahme
-- Fokus auf Logik statt Formatierung
-- Lesbarere Merge Requests
-- Einfacheres Onboarding
-- Als Hilfestellung für Azubis
+- Fokus auf Logik statt Formatierung – _Konzentration auf das Wesentliche_
+- Lesbarere Merge Requests – _das wichtige auf einen Blick_
+- Effizientere Pipelines – _kein `fix: linting` mehr_
+- Einfacheres Onboarding – _neue Teammitglieder können sofort produktiv sein_
+- Als Hilfestellung für Azubis – _so muss das also aussehen_
+- Weniger Diskussionen – _lasst die Tools entscheiden_
 
+---
+layout: statement
+---
+
+# Wir haben das schon längst
+
+---
+layout: bullets
 ---
 
 # JavaScript/TypeScript Ecosystem
@@ -218,28 +233,6 @@ layout: bullets
 - **ESLint**: De-facto Standard für JS/TS-Linting
 - **Prettier**: Opinionated Formatter für diverse Sprachen
 - **TypeScript Compiler**: Eigenes Typechecking/Linting
-- **JSConfig**: VS Code-Integration für JavaScript
-
----
-layout: bullets
----
-
-# PHP/Laravel Ecosystem
-
-- **PHP_CodeSniffer**: Klassischer PHP-Linter
-- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
-- **Pint**: Laravel-spezifischer Formatter
-- **Duster**: Kombiniert verschiedene Tools
-- **Larastan/PHPStan**: Statische Analyse
-
----
-layout: bullets
----
-
-# Build-Tools mit Linting
-
-- **Vite**: Modernes, schnelles Build-Tool
-- **Laravel Mix**: Wrapper um Webpack
 
 ---
 layout: section
@@ -534,6 +527,18 @@ export default [
   }
 }
 ```
+
+---
+layout: bullets
+---
+
+# PHP/Laravel Ecosystem
+
+- **PHP_CodeSniffer**: Klassischer PHP-Linter
+- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
+- **Pint**: Laravel-spezifischer Formatter
+- **Duster**: Kombiniert verschiedene Tools
+- **Larastan/PHPStan**: Statische Analyse
 
 ---
 
