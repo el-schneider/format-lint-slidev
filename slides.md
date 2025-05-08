@@ -10,9 +10,9 @@ layout: intro
 
 # Prettier & ESLint
 
-<v-click>& Pint, Duster, PHP CS Fixer, …</v-click>
+<v-click>& .editorconfig, .jsconfig, …</v-click>
 
-<small v-click>& .editorconfig, .jsconfig, …</small>
+<small v-click>& Pint, Duster, PHP CS Fixer, …</small>
 
 ---
 layout: section
@@ -31,6 +31,10 @@ layout: section
 - Die Tools souverän nutzen — _sich nicht ärgern lassen_
 
 </v-clicks>
+
+<!--
+Gerne jederzeit unterbrechen, Fragen stellen, Pausen machen, …
+-->
 
 ---
 layout: statement
@@ -498,7 +502,6 @@ oder:
 ```json
 // settings.json
 {
-  "editor.formatOnSave": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
@@ -681,7 +684,6 @@ export default defineConfig([
   includeIgnoreFile(gitignorePath),
   {
     languageOptions: {
-      sourceType: "module",
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -689,7 +691,7 @@ export default defineConfig([
     },
     rules: {
       strict: "error",
-      // more ...
+      // …
     },
   },
 ]);
@@ -703,7 +705,7 @@ layout: two-cols-header-footer
 
 # ESLint-Regeln
 
-`.eslintrc` ist _deprecated_ seit ESLint 9. Ab jetzt wird die Konfiguration in `eslint.config.js` definiert.
+`.eslintrc` ist _deprecated_ seit ESLint 9. Ab jetzt wird die Konfiguration in `eslint.config.js` definiert. Die neue Version wird **Flat Config** genannt.
 
 ::left::
 
@@ -736,6 +738,10 @@ export default defineConfig([
 https://eslint.org/docs/latest/rules/
 
 https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js
+
+<!--
+Flat Config, weil es nur noch eine Datei gibt. Das alte Format erlaubte verschachteln von Konfigurationsdateien in Unterverzeichnissen innerhalb eines Projekts.
+-->
 
 ---
 layout: two-cols-header
@@ -911,6 +917,12 @@ layout: bullets
 </div>
 
 ---
+layout: fact
+---
+
+# Demo Time
+
+---
 layout: two-cols-header
 ---
 
@@ -923,118 +935,6 @@ layout: two-cols-header
 - **Larastan/PHPStan**: Statische Analyse
 
 ---
-layout: section
----
-
-# Vite
-
-## Blitzschnelle Entwicklungsumgebung
-
----
-layout: bullets
----
-
-# Was ist Vite?
-
-- Modernes Build-Tool und Dev-Server
-- Optimiert für ESM (ECMAScript Modules)
-- 2025: Noch bessere Performance, mehr Plugins
-
----
-layout: bullets
----
-
-# Warum Vite?
-
-- Extreme Geschwindigkeit
-- Einfache Konfiguration
-- Instant Hot Module Replacement
-- Optimierte Production Builds
-
----
-layout: bullets
----
-
-# Einrichtung eines Projekts
-
-```bash
-npm create vite@latest
-```
-
-```js
-// vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    open: true,
-  },
-  build: {
-    minify: "terser",
-    sourcemap: true,
-  },
-});
-```
-
----
-layout: section
----
-
-# Integration
-
-## Zusammenspiel in VSCode
-
----
-layout: bullets
----
-
-# Workspace-Konfiguration
-
-```json
-// .vscode/settings.json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact"
-  ],
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
-}
-```
-
----
-layout: section
----
-
-# Implementierungsstrategie
-
----
-layout: bullets
----
-
-# Schrittweise Einführung
-
-1. **Analyse**: Codebase bewerten
-2. **Planung**: Regeln & Konfigurationen festlegen
-3. **Einführung**: Tools schrittweise integrieren
-4. **Schulung**: Team trainieren
-5. **Iteration**: Regeln anpassen nach Bedarf
-
----
 layout: bullets
 ---
 
@@ -1044,63 +944,6 @@ layout: bullets
 - Automatische Fixes für einfache Probleme
 - Manuelle Anpassungen für komplexe Fälle
 - Verzeichnisspezifische Overrides
-
----
-layout: section
----
-
-# Vorteile
-
----
-layout: bullets
----
-
-# Messbare Vorteile
-
-- 20-30% weniger Zeit in Code Reviews
-- Weniger Fehler in Produktion
-- Schnellere Entwicklungszyklen
-- Höhere Codequalität
-
----
-layout: bullets
----
-
-# Nicht-messbare Vorteile
-
-- Höhere Entwicklerzufriedenheit
-- Einfacheres Onboarding
-- Weniger Frustration
-- Einheitliche Qualitätsstandards
-
----
-layout: section
----
-
-# Nächste Schritte
-
----
-layout: bullets
----
-
-# Implementierungsplan
-
-1. **Woche 1-2**: Setup & Konfiguration
-2. **Woche 3-4**: Pilotprojekt & Anpassung
-3. **Woche 5-6**: Ausweitung auf alle Projekte
-4. **Fortlaufend**: Regelmäßige Verbesserungen
-
----
-layout: bullets
----
-
-# Lernressourcen
-
-- [Prettier Docs](https://prettier.io/docs/en/)
-- [ESLint Docs](https://eslint.org/docs/latest/)
-- [Vite Docs](https://vitejs.dev/guide/)
-- [Awesome ESLint](https://github.com/dustinspecker/awesome-eslint)
-- [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 ---
 layout: section
