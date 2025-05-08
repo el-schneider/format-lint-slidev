@@ -1,4 +1,5 @@
 {
+  "printWidth": 70,
   "overrides": [
     {
       "files": ["slides.md", "pages/*.md"],

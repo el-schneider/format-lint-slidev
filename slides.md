@@ -211,47 +211,66 @@ layout: bullets
 
 # Was wir davon haben
 
+<v-clicks>
+
 - Fokus auf Logik statt Formatierung – _Konzentration auf das Wesentliche_
 - Lesbarere Merge Requests – _das wichtige auf einen Blick_
 - Effizientere Pipelines – _kein `fix: linting` mehr_
 - Einfacheres Onboarding – _neue Teammitglieder können sofort produktiv sein_
 - Als Hilfestellung für Azubis – _so muss das also aussehen_
-- Weniger Diskussionen – _lasst die Tools entscheiden_
+- Weniger Diskussionen – _lasset die Tools entscheiden!_
+
+</v-clicks>
 
 ---
 layout: statement
 ---
 
-# Wir haben das schon längst
+# Einfach anfangen
 
 ---
-layout: bullets
+layout: three-cols-header
 ---
 
-# JavaScript/TypeScript Ecosystem
+# JavaScript
 
-- **ESLint**: De-facto Standard für JS/TS-Linting
-- **Prettier**: Opinionated Formatter für diverse Sprachen
-- **TypeScript Compiler**: Eigenes Typechecking/Linting
+Dazu gehören auch: React, Vue, Svelte, …
+
+::left::
+
+<v-click>
+
+## **Prettier**
+
+Opinionated Formatter für diverse Sprachen
+
+</v-click>
+
+::center::
+
+<v-click>
+
+## **ESLint**
+
+De-facto Standard für JavaScript/TypeScript-Linting
+
+</v-click>
+
+::right::
+
+<v-click>
+
+## **TypeScript Compiler**
+
+Eigenes Typechecking/Linting
+
+</v-click>
 
 ---
 layout: section
 ---
 
 # Prettier
-
-## Konsistente Codeformatierung ohne Diskussion
-
----
-layout: image-right
-image: /images/prettier_splash.png
----
-
-# Was ist Prettier?
-
-- _Opinionated_ Code-Formatierer
-- Unterstützt JavaScript, TypeScript, CSS, HTML, PHP, …
-- De-facto Standard für JavaScript/TypeScript
 
 ---
 layout: two-cols-header
@@ -278,10 +297,6 @@ layout: two-cols-header
 
 Prettier hat viele Plugins für verschiedene Sprachen und Frameworks.
 
-```bash
-npm install --save-dev prettier-plugin-tailwindcss
-```
-
 - `prettier-plugin-blade`
 - `prettier-plugin-tailwindcss`
 - `prettier-plugin-antlers`
@@ -302,32 +317,45 @@ layout: two-cols-header
 npm install --save-dev prettier
 ```
 
+bzw.
+
+```bash
+npm install --save-dev \
+    prettier \
+    prettier-plugin-antlers \
+    prettier-plugin-tailwindcss
+```
+
+<v-click>fertig!</v-click>
+
 ::right::
 
-## 2. Prettier konfigurieren:
+<v-click>
+
+## 2. Prettier konfigurieren
 
 ```json
+// prettier-ignore
 // .prettierrc
 {
-  "printWidth": 100,
-  "tabWidth": 2,
   "singleQuote": true,
-  "trailingComma": "es5",
-  "semi": true
+  "printWidth": 120,
+  "plugins": [
+    "prettier-plugin-antlers",
+    "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": ["*.antlers.*"],
+      "options": {
+        "parser": "antlers"
+      }
+    }
+  ]
 }
 ```
 
-```json
-// settings.json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-  //
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
-}
-```
+</v-click>
 
 ---
 layout: two-cols-header
@@ -337,13 +365,14 @@ layout: two-cols-header
 
 ::left::
 
-- Installiere die Extension: <br>
-  `esbenp.prettier-vscode`
-- Optional: `editor.formatOnSave` in VSCode
+<div class="flex gap-4 items-center">
+    <code>dbaeumer.prettier-vscode</code>
+    <img class="size-18" src="./images/esbenp.prettier-vscode.png" alt="Prettier in VSCode" />
+</div>
 
-```bash
-npm install --save-dev prettier
-```
+- <kbd>SHIFT</kbd> + <kbd>OPT</kbd> + <kbd>F</kbd>: `Format Document`
+- <kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, `Format: Format Document`
+- Optional: `editor.formatOnSave` in VSCode
 
 ::right::
 
@@ -352,6 +381,18 @@ npm install --save-dev prettier
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+oder:
+
+```json
+// settings.json
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
 ```
 
@@ -371,7 +412,8 @@ prettier [options] [file/dir/glob ...]
 
 ## Empfehlung
 
-In der Pipeline nur checken, nicht fixen.
+- In der Pipeline nur checken, nicht fixen.
+- Pre-Commit-Hook mit `prettier --check`
 
 ::right::
 
@@ -405,13 +447,9 @@ layout: two-cols-header
 
 # Notfall-Maßnahmen
 
-oder: bitte, nerv' mich nicht!
-
 ::left::
 
 ## .prettierignore
-
-Beispiel im `stinit`:
 
 ```bash
 # .prettierignore
@@ -460,12 +498,29 @@ hello: world
 ```
 
 ---
+
+# Antlers
+
+Im Moment kann Formatierung nur für eine komplette Datei ausgeschalten werden.
+
+```liquid
+{{#
+    @format false
+#}}
+```
+
+oder `.prettierignore`
+
+```bash
+# .prettierignore
+resources/views/some-special-code.antlers.html
+```
+
+---
 layout: section
 ---
 
-# ESLint 9+
-
-## Code-Qualität sicherstellen
+# ESLint
 
 ---
 layout: bullets
@@ -473,51 +528,80 @@ layout: bullets
 
 # Was ist ESLint?
 
-- Statisches Analyse-Tool für JavaScript
+- Statisches Analyse-Tool für JavaScript und TypeScript
 - Findet und behebt Probleme
-- ESLint 9+: Flat Config, bessere Performance
+- ESLint 8+: Flat Config, bessere Performance
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
-# Warum ESLint?
+# Installation im Projekt
 
-- Fehler frühzeitig erkennen
-- Best Practices erzwingen
-- Modernisierung fördern
-- Lerneffekt für Entwickler
+::left::
 
----
-layout: bullets
----
+## 1. ESLint installieren:
 
-# Moderne Konfiguration (ESLint 9+)
-
-```js
-// eslint.config.js
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-
-export default [
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    files: ["**/*.js", "**/*.ts", "**/*.tsx"],
-    rules: {
-      "no-unused-vars": "error",
-      "no-console": "warn",
-      // Teamspezifische Regeln hier
-    },
-  },
-];
+```bash
+npm install --save-dev eslint globals
 ```
 
+::right::
+
+## 2. ESLint konfigurieren
+
+<div style="--slidev-code-font-size: 8px; --slidev-code-line-height: 12px;">
+
+```js
+import { includeIgnoreFile } from "@eslint/compat";
+import { fileURLToPath } from "node:url";
+import { defineConfig } from "eslint/config";
+import js from "@eslint/js";
+import globals from "globals";
+
+const gitignorePath = fileURLToPath(
+  new URL(".gitignore", import.meta.url),
+);
+
+export default defineConfig([
+  js.configs.recommended,
+  includeIgnoreFile(gitignorePath),
+  {
+    languageOptions: {
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      strict: "error",
+      // more ...
+    },
+  },
+]);
+```
+
+</div>
+
+---
+layout: two-cols-header
 ---
 
-## layout: bullets
+# Einrichtung in VSCode
 
-# VSCode-Integration
+::left::
+
+## Installiere die Extension:
+
+<div class="flex gap-4 items-center">
+    <code>dbaeumer.vscode-eslint</code>
+    <img class="size-18" src="./images/dbaeumer.vscode-eslint.png" alt="ESLint in VSCode" />
+</div>
+
+::right::
+
+## Konfiguration
 
 ```json
 // settings.json
@@ -531,128 +615,6 @@ export default [
 ---
 layout: bullets
 ---
-
-# PHP/Laravel Ecosystem
-
-- **PHP_CodeSniffer**: Klassischer PHP-Linter
-- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
-- **Pint**: Laravel-spezifischer Formatter
-- **Duster**: Kombiniert verschiedene Tools
-- **Larastan/PHPStan**: Statische Analyse
-
----
-
-## layout: section
-
-# Vite
-
-## Blitzschnelle Entwicklungsumgebung
-
----
-
-## layout: bullets
-
-# Was ist Vite?
-
-- Modernes Build-Tool und Dev-Server
-- Optimiert für ESM (ECMAScript Modules)
-- 2025: Noch bessere Performance, mehr Plugins
-
----
-
-## layout: bullets
-
-# Warum Vite?
-
-- Extreme Geschwindigkeit
-- Einfache Konfiguration
-- Instant Hot Module Replacement
-- Optimierte Production Builds
-
----
-
-## layout: bullets
-
-# Einrichtung eines Projekts
-
-```bash
-npm create vite@latest
-```
-
-```js
-// vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    open: true,
-  },
-  build: {
-    minify: "terser",
-    sourcemap: true,
-  },
-});
-```
-
----
-
-## layout: section
-
-# Integration
-
-## Zusammenspiel in VSCode
-
----
-
-## layout: bullets
-
-# Workspace-Konfiguration
-
-```json
-// .vscode/settings.json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact"
-  ],
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
-}
-```
-
----
-
-## layout: bullets
-
-# Empfohlene Extensions
-
-- Prettier
-- ESLint
-- Antlers Toolbox
-
----
-
-## layout: section
-
-# Umgang mit Problemfällen
-
----
-
-## layout: bullets
 
 # ESLint-Regeln deaktivieren
 
@@ -680,85 +642,120 @@ function debuggingFunction() {
 ```
 
 ---
+layout: bullets
+---
 
-## layout: bullets
+# PHP/Laravel Ökosystem
 
-# Laravel & Blade Lösungen
+- **PHP_CodeSniffer**: Klassischer PHP-Linter
+- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
+- **Pint**: Laravel-spezifischer Formatter
+- **Duster**: Kombiniert verschiedene Tools
+- **Larastan/PHPStan**: Statische Analyse
+
+---
+layout: section
+---
+
+# Vite
+
+## Blitzschnelle Entwicklungsumgebung
+
+---
+layout: bullets
+---
+
+# Was ist Vite?
+
+- Modernes Build-Tool und Dev-Server
+- Optimiert für ESM (ECMAScript Modules)
+- 2025: Noch bessere Performance, mehr Plugins
+
+---
+layout: bullets
+---
+
+# Warum Vite?
+
+- Extreme Geschwindigkeit
+- Einfache Konfiguration
+- Instant Hot Module Replacement
+- Optimierte Production Builds
+
+---
+layout: bullets
+---
+
+# Einrichtung eines Projekts
+
+```bash
+npm create vite@latest
+```
 
 ```js
-// ESLint für Blade
-export default [
-  {
-    files: ['**/*.blade.php'],
-    processor: '@eslint-community/eslint-plugin-php/processors/blade',
-    // Spezielle Regeln
-  }
-];
+// vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// Prettier mit Blade-Plugin
-{
-  "plugins": ["@shufo/prettier-plugin-blade"],
-  "overrides": [
-    {
-      "files": "*.blade.php",
-      "options": {
-        "parser": "blade",
-        "tabWidth": 4
-      }
-    }
-  ]
-}
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    open: true,
+  },
+  build: {
+    minify: "terser",
+    sourcemap: true,
+  },
+});
 ```
 
 ---
+layout: section
+---
 
-## layout: bullets
+# Integration
 
-# Antlers (Statamic) Lösungen
+## Zusammenspiel in VSCode
+
+---
+layout: bullets
+---
+
+# Workspace-Konfiguration
 
 ```json
-// settings.json
+// .vscode/settings.json
 {
-  "[antlers]": {
-    "editor.formatOnSave": false
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
 ```
 
-```
-{{ komplexer_antlers_code }}
-```
-
 ---
-
-## layout: bullets
-
-# .ignore Dateien
-
-```
-# .eslintignore
-src/legacy-components/**/*
-vendor/**/*
-node_modules/**/*
-*.min.js
-
-# .prettierignore
-/vendor
-/node_modules
-*.blade.php
-*.min.js
-dist/*
-```
-
+layout: section
 ---
-
-## layout: section
 
 # Implementierungsstrategie
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Schrittweise Einführung
 
@@ -769,8 +766,8 @@ dist/*
 5. **Iteration**: Regeln anpassen nach Bedarf
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Umgang mit Legacy-Code
 
@@ -780,38 +777,14 @@ dist/*
 - Verzeichnisspezifische Overrides
 
 ---
-
-## layout: bullets
-
-# CI/CD-Integration
-
-```yaml
-# .github/workflows/lint.yml
-name: Lint
-
-on: [push, pull_request]
-
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm run lint
-```
-
+layout: section
 ---
-
-## layout: section
 
 # Vorteile
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Messbare Vorteile
 
@@ -821,8 +794,8 @@ jobs:
 - Höhere Codequalität
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Nicht-messbare Vorteile
 
@@ -832,14 +805,14 @@ jobs:
 - Einheitliche Qualitätsstandards
 
 ---
-
-## layout: section
+layout: section
+---
 
 # Nächste Schritte
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Implementierungsplan
 
@@ -849,8 +822,8 @@ jobs:
 4. **Fortlaufend**: Regelmäßige Verbesserungen
 
 ---
-
-## layout: bullets
+layout: bullets
+---
 
 # Lernressourcen
 
@@ -861,7 +834,7 @@ jobs:
 - [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 ---
-
-## layout: section
+layout: section
+---
 
 # Fragen?
