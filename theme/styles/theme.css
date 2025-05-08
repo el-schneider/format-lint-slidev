@@ -6,5 +6,17 @@
   --slidev-code-font-family: monospace;
   --prism-background: #2a2139; /* Synthwave background */
   --slidev-theme-primary: #eee;
-  --slidev-code-margin: 8px;
+  --slidev-code-margin: 16px 0px;
+}
+
+.slidev-layout table {
+  @apply table-fixed;
+
+  td {
+    @apply align-top;
+  }
+
+  .slidev-vclick-hidden {
+    @apply border-transparent;
+  }
 }

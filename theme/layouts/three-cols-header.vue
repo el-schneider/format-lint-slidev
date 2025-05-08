@@ -26,9 +26,6 @@ const props = defineProps({
     <div class="col-right" :class="props.class">
       <slot name="right" />
     </div>
-    <div class="col-bottom" :class="props.class">
-      <slot name="bottom" />
-    </div>
   </div>
 </template>
 

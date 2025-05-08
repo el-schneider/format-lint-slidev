@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="slidev-layout two-cols-header gap-4 w-full h-full"
+    class="slidev-layout two-cols-header gap-6 w-full h-full"
     :class="layoutClass"
   >
     <div class="col-header">
@@ -22,9 +22,6 @@ const props = defineProps({
     </div>
     <div class="col-right" :class="props.class">
       <slot name="right" />
-    </div>
-    <div class="col-bottom" :class="props.class">
-      <slot name="bottom" />
     </div>
   </div>
 </template>

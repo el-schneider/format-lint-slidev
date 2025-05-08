@@ -10,7 +10,9 @@ layout: intro
 
 # Prettier & ESLint
 
-<v-click>& Pint, Duster, Larastan, …</v-click>
+<v-click>& Pint, Duster, PHP CS Fixer, …</v-click>
+
+<small v-click>& .editorconfig, .jsconfig, …</small>
 
 ---
 layout: section
@@ -90,7 +92,7 @@ if ($lessBad) {
 </v-click>
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
 # Was macht Linting?
@@ -99,20 +101,76 @@ layout: bullets
 - Logische Fehler, Bugs vor der Ausführung finden
 - Tools scannen Code ohne Ausführung und warnen bei Problemen
 
+::left::
+
+<v-click>
+
+```js
+const a = 0;
+
+a = 1; // Error: `a` is read-only
+```
+
+</v-click>
+
+<v-click >
+
+```js
+if (a) {
+  foo();
+} else if (b) {
+  bar();
+  // This branch can never execute.
+  // Its condition is a duplicate or covered
+  // by previous conditions in the if-else-if chain.
+} else if (b) {
+  baz();
+}
+```
+
+</v-click>
+
+::right::
+
+<v-click>
+
+## Vorher
+
+```php
+$value = 'hello vvworld!';
+
+return view('view', compact('value'));
+```
+
+</v-click>
+
+<v-click>
+
+## Nachher
+
+```php
+return view('view', ['value' => 'hello vvworld!']);
+```
+
+</v-click>
+
 ---
 layout: bullets
 ---
 
 # Formatting vs. Linting
 
-| **Formatting**                                             | **Linting**                                                      |
-| ---------------------------------------------------------- | ---------------------------------------------------------------- |
-| Erzwingt einheitlichen Code-Stil                           | Analysiert Code auf potenzielle Fehler und Qualitätsprobleme     |
-| Fokus auf Syntax-Darstellung (Leerzeichen, Einrückung ...) | Fokus auf Code-Semantik, Logik und Best Practices                |
-| Formatiert Code automatisch nach Stilregeln                | Kann einige Probleme beheben, meldet aber hauptsächlich Probleme |
-| Analysiert Codestruktur ohne Logikprüfung                  | Versteht Code-Bedeutung und potenzielle Ausführungspfade         |
-| Erkennt keine Logikfehler oder Bugs                        | Identifiziert potenzielle Bugs, Code Smells und Anti-Patterns    |
-| Generell schneller - einfachere Operationen                | Intensiver - erfordert tiefere Analyse                           |
+<v-clicks>
+
+| **Formatting**                   | **Linting**                                                     |
+| -------------------------------- | --------------------------------------------------------------- |
+| Syntax & Darstellung             | Semantik & Best Practices                                       |
+| Automatische Formatierung        | Problemerkennung & teilweise Behebung                           |
+| Oberflächliche Strukturanalyse   | Tiefes Verständnis von Code-Logik <br> <u>Statische Analyse</u> |
+| Keine Erkennung von Logikfehlern | Findet Bugs und problematische Muster                           |
+| Schnell und ressourcenschonend   | Rechenintensiver durch komplexere Analyse                       |
+
+</v-clicks>
 
 ---
 layout: bullets
@@ -120,12 +178,16 @@ layout: bullets
 
 # Statische vs. Dynamische Analyse
 
+<v-clicks>
+
 | **Statisch**                             | **Dynamisch**                                |
 | ---------------------------------------- | -------------------------------------------- |
 | Prüft ohne Ausführung                    | Prüft während der Laufzeit                   |
 | Findet: Syntaxfehler, Stilverstöße, Bugs | Findet: Laufzeitfehler, Performance-Probleme |
 | Schnell, im Editor oder CI               | Braucht echte Eingaben oder Tests            |
 | Beispiele: ESLint, TypeScript            | Beispiele: Profiler, Debugger, Tests         |
+
+</v-clicks>
 
 ---
 layout: two-cols-header
@@ -148,7 +210,7 @@ echo "hello vvworld!";
 
 ::right::
 
-## AST (gekürzt)
+## AST (vereinfacht)
 
 ```json
 {
@@ -219,6 +281,7 @@ layout: bullets
 - Einfacheres Onboarding – _neue Teammitglieder können sofort produktiv sein_
 - Als Hilfestellung für Azubis – _so muss das also aussehen_
 - Weniger Diskussionen – _lasset die Tools entscheiden!_
+- Den Stack meistern – _verstehen, was da ist_
 
 </v-clicks>
 
