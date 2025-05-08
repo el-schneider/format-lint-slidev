@@ -506,7 +506,7 @@ layout: two-cols-header
 ## CLI Befehl
 
 ```bash
-prettier [options] [file/dir/glob ...]
+npx prettier [options] [file/dir/glob ...]
 ```
 
 ## Empfehlung
@@ -519,11 +519,11 @@ prettier [options] [file/dir/glob ...]
 ## Alles oder einzelne Dateien
 
 ```bash
-prettier --check .
+npx prettier --check .
 ```
 
 ```bash
-prettier --write examples/example.blade.php
+npx prettier --write examples/example.blade.php
 ```
 
 ## Als NPM Script
@@ -759,7 +759,7 @@ layout: two-cols-header
 layout: bullets
 ---
 
-# ESLint-Regeln deaktivieren
+# ESLint-Regeln im Code deaktivieren
 
 ```js
 // Für eine Zeile
@@ -785,6 +785,33 @@ function debuggingFunction() {
 ```
 
 https://eslint.org/docs/latest/use/configure/rules
+
+---
+layout: two-cols-header
+---
+
+# Nutzung in der Pipeline
+
+::left::
+
+## CLI Befehl
+
+```bash
+npx eslint [options] [file|dir|glob]*
+npx eslint . // checken
+npx eslint . --fix // fixen
+```
+
+::right::
+
+## NPM Script
+
+```json
+"scripts": {
+    "js-lint:check": "eslint .",
+    "js-lint:fix": "eslint . --fix",
+}
+```
 
 ---
 layout: bullets
