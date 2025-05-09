@@ -4,6 +4,9 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 highlighter: shiki
 mdc: true
 layout: intro
+title: Prettier & ESLint
+titleTemplate: "%s - hello vvworld"
+author: "Jonas List"
 ---
 
 ## hello vvworld
@@ -481,6 +484,8 @@ layout: two-cols-header
     <img class="size-18" src="./images/esbenp.prettier-vscode.png" alt="Prettier in VSCode" />
 </div>
 
+[VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
 - <kbd>SHIFT</kbd> + <kbd>OPT</kbd> + <kbd>F</kbd>: `Format Document`
 - <kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, `Format: Format Document`
 - Optional: `editor.formatOnSave` in VSCode
@@ -700,21 +705,57 @@ export default defineConfig([
 layout: two-cols-header-footer
 ---
 
+# Dateien ignorieren
+
+::left::
+
+## Konfigurationsdatei
+
+Mit `globalIgnores` können Muster global definiert werden.
+
+```js
+// eslint.config.js
+import { defineConfig, globalIgnores } from "eslint/config";
+
+export default defineConfig([
+  {
+    ignores: [
+      "dist/", // Ignoriert das 'dist' Verzeichnis
+      "**/generated-code.js", // Alle Dateien namens 'generated-code.js'
+      ".config/*", // Inhalt von '.config'
+      "node_modules/*", // Ignoriert alles in node_modules...
+      "!node_modules/mylib/", // ...außer 'mylib'
+    ],
+  },
+]);
+```
+
+::right::
+
+## CLI (`--ignore-pattern`)
+
+Einzelne Muster können auch direkt beim Aufruf übergeben werden.
+
+```bash
+# Verzeichnisse/Dateien ignorieren
+npx eslint . --ignore-pattern 'dist/'
+npx eslint . --ignore-pattern '*.log'
+
+```
+
+::bottom::
+
+Weitere Details: [eslint.org/docs/latest/use/configure/ignore#ignoring-files](https://eslint.org/docs/latest/use/configure/ignore#ignoring-files)
+
+---
+layout: two-cols-header-footer
+---
+
 # ESLint-Regeln
 
 `.eslintrc` ist _deprecated_ seit ESLint 9. Ab jetzt wird die Konfiguration in `eslint.config.js` definiert. Die neue Version wird **Flat Config** genannt.
 
 ::left::
-
-## Konfiguration
-
-```js
-"off" or 0 // (turn the rule off)
-"warn" or 1 // (doesn't affect exit code).
-"error" or 2 // (exit code is 1 when triggered).
-```
-
-::right::
 
 ## Regeln
 
@@ -728,6 +769,16 @@ export default defineConfig([
     },
   },
 ]);
+```
+
+::right::
+
+## Konfiguration
+
+```js
+"off" or 0 // (turn the rule off)
+"warn" or 1 // (doesn't affect exit code).
+"error" or 2 // (exit code is 1 when triggered).
 ```
 
 ::bottom::
@@ -754,6 +805,8 @@ layout: two-cols-header
     <code>dbaeumer.vscode-eslint</code>
     <img class="size-18" src="./images/dbaeumer.vscode-eslint.png" alt="ESLint in VSCode" />
 </div>
+
+[VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 ::right::
 
@@ -947,16 +1000,7 @@ layout: fact
 
 # Demo Time
 
----
-layout: bullets
----
-
-# Umgang mit Legacy-Code
-
-- Migration nach Priorität
-- Automatische Fixes für einfache Probleme
-- Manuelle Anpassungen für komplexe Fälle
-- Verzeichnisspezifische Overrides
+https://github.com/el-schneider/format-lint-vite-starter
 
 ---
 layout: section
@@ -968,10 +1012,6 @@ layout: section
 layout: two-cols-header
 ---
 
-# PHP/Laravel Ökosystem
-
-- **PHP_CodeSniffer**: Klassischer PHP-Linter
-- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
-- **Pint**: Laravel-spezifischer Formatter
-- **Duster**: Kombiniert verschiedene Tools
-- **Larastan/PHPStan**: Statische Analyse
+<div class="w-full max-h-full flex justify-center h-[50vh]">
+    <img src="./images/tools_ordered.svg" alt="PHP CS Fixer" />
+</div>

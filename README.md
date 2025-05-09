@@ -82,12 +82,30 @@ code --install-extension esbenp.prettier-vscode
 }
 ```
 
+### Prettier CLI
+
+```bash
+npx prettier [options] [file|dir|glob]*
+```
+
+#### Checken
+
+```bash
+prettier . --check
+```
+
+#### Fixen
+
+```bash
+prettier . --write
+```
+
 ## ESLint
 
 ### Installation
 
 ```bash
-npm install --save-dev eslint globals
+npm install --save-dev eslint globals @eslint/compat
 ```
 
 ### Config
@@ -135,27 +153,7 @@ code --install-extension dbaeumer.vscode-eslint
 }
 ```
 
-## CLI
-
-### Prettier
-
-```bash
-npx prettier [options] [file|dir|glob]*
-```
-
-#### Checken
-
-```bash
-prettier . --check
-```
-
-#### Fixen
-
-```bash
-prettier . --write
-```
-
-### ESLint
+### ESLint CLI
 
 ```bash
 npx eslint [options] [file|dir|glob]*
@@ -171,4 +169,38 @@ npx eslint .
 
 ```bash
 npx eslint . --fix
+```
+
+## JSConfig
+
+```json
+{
+  "compilerOptions": {
+    /* Base Options */
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "preserve",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "checkJs": true,
+
+    /* Types */
+    "types": ["vite/client"]
+  },
+  "exclude": ["node_modules", "public", "vendor"]
+}
 ```
