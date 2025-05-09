@@ -25,3 +25,7 @@
   --slidev-code-font-size: 8px;
   --slidev-code-line-height: 12px;
 }
+
+.foreground {
+  fill: currentColor;
+}

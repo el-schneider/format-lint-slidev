@@ -62,7 +62,7 @@
   }
 
   blockquote {
-    @apply text-sm px-3 py-2 bg-$prism-background border-$slidev-theme-primary border-l-2;
+    @apply text-sm px-3 py-2 text-whitebg-$prism-background border-$slidev-theme-primary border-l-2;
   }
 
   blockquote > * {
