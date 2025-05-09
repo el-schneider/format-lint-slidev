@@ -42,8 +42,6 @@ layout: statement
 
 # Formatting/Linting ist das IaC für die Codequalität
 
-<span v-click>FLaC?</span>
-
 ---
 layout: section
 image: https://source.unsplash.com/collection/94734566/1920x1080
@@ -88,10 +86,10 @@ echo "Bad";
 ```php
 <?php
 
-echo "Less bad!";
+echo 'Less bad!';
 
 if ($lessBad) {
-    echo "Less bad";
+    echo 'Less bad';
 }
 ```
 
@@ -532,11 +530,11 @@ npx prettier [options] [file/dir/glob ...]
 ## Alles oder einzelne Dateien
 
 ```bash
-npx prettier --check .
+npx prettier . --check
 ```
 
 ```bash
-npx prettier --write examples/example.blade.php
+npx prettier examples/example.blade.php --write
 ```
 
 ## Als NPM Script
@@ -557,7 +555,7 @@ npm run format:fix
 layout: two-cols-header
 ---
 
-# Notfall-Maßnahmen
+# Prettier ausschalten
 
 ::left::
 
@@ -580,12 +578,13 @@ package-lock.json
 /examples/example.blade.php
 ```
 
+https://prettier.io/docs/ignore
+
 ::right::
 
 ## Ignorieren mit Kommentaren
 
 ```js
-// JS
 // prettier-ignore
 const matrix = [
   1, 0, 0,
@@ -595,14 +594,12 @@ const matrix = [
 ```
 
 ```css
-// CSS
 /* prettier-ignore */
 .my    ugly rule {
 }
 ```
 
 ```yaml
-// YAML
 # prettier-ignore
 key  : value
 hello: world
@@ -611,7 +608,7 @@ hello: world
 
 ---
 
-# Antlers
+# Antlers 🙁
 
 Im Moment kann Formatierung nur für eine komplette Datei deaktiviert werden.
 
@@ -644,7 +641,7 @@ layout: bullets
 
 - Statisches Analyse-Tool für JavaScript und TypeScript
 - Findet und behebt Probleme
-- ESLint 8+: Flat Config, bessere Performance
+- ESLint 8+: neue (Flat) Config, bessere Performance
 
 ---
 layout: two-cols-header
@@ -772,35 +769,55 @@ layout: two-cols-header
 ```
 
 ---
-layout: bullets
+layout: two-cols-header
 ---
 
 # ESLint-Regeln im Code deaktivieren
 
+## _Magische_ Kommentare
+
+::left::
+
+Für eine ganze Datei
+
 ```js
-// Für eine Zeile
+/* eslint-disable */
+```
+
+```js
+/* eslint-disable no-alert */
+```
+
+```js
+/* eslint no-alert: "off" */
+```
+
+<small> Muss am Anfang der Datei stehen </small>
+
+[eslint.org/docs](https://eslint.org/docs/latest/use/configure/rules#disabling-rules)
+
+::right::
+
+Für eine Zeile
+
+```js
 const foo = ""; // eslint-disable-line no-unused-vars
+```
 
-// eslint-disable-next-line no-console
-console.log("Nur hier erlaubt");
+```js
+// eslint-disable-next-line no-alert
+alert("foo");
+```
 
-// Für einen Bereich
+Für einen Bereich
+
+```js
 /* eslint-disable */
 function legacyFunction() {
   // Problematischer Code...
 }
 /* eslint-enable */
-
-// Spezifische Regeln
-/* eslint-disable no-console, no-unused-vars */
-function debuggingFunction() {
-  const debugVar = "helper";
-  console.log("Debug info");
-}
-/* eslint-enable no-console, no-unused-vars */
 ```
-
-https://eslint.org/docs/latest/use/configure/rules
 
 ---
 layout: two-cols-header
@@ -869,6 +886,14 @@ https://typescript-eslint.io/getting-started
 https://typescript-eslint.io/rules/
 
 ---
+layout: statement
+---
+
+<div class="flex justify-center">
+    <img class="w-2/3" src="./images/when_i_make_a_mistake.jpg" alt="TypeScript ESLint" />
+</div>
+
+---
 layout: bullets
 ---
 
@@ -923,18 +948,6 @@ layout: fact
 # Demo Time
 
 ---
-layout: two-cols-header
----
-
-# PHP/Laravel Ökosystem
-
-- **PHP_CodeSniffer**: Klassischer PHP-Linter
-- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
-- **Pint**: Laravel-spezifischer Formatter
-- **Duster**: Kombiniert verschiedene Tools
-- **Larastan/PHPStan**: Statische Analyse
-
----
 layout: bullets
 ---
 
@@ -950,3 +963,15 @@ layout: section
 ---
 
 # Fragen?
+
+---
+layout: two-cols-header
+---
+
+# PHP/Laravel Ökosystem
+
+- **PHP_CodeSniffer**: Klassischer PHP-Linter
+- **PHP-CS-Fixer**: PHP-Formatter mit PSR-Standards
+- **Pint**: Laravel-spezifischer Formatter
+- **Duster**: Kombiniert verschiedene Tools
+- **Larastan/PHPStan**: Statische Analyse
